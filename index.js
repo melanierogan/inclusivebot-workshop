@@ -30,9 +30,9 @@ const run = async () => {
 		const repoName = repo.repo;
 
 		const { data: pullRequest } = await octokit.pulls.get({
-			owner: owner,
-			repo: repoName,
-			pull_number: pull_number,
+			owner: 'melanierogan',
+			repo: 'inclusivebot-workshop',
+			pull_number: 32,
 		});
 
 		console.log(pullRequest, 'the pull request <<<<<');

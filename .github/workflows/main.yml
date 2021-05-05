@@ -1,0 +1,30 @@
+name: Testing Action
+on:
+  issues:
+    types: [opened, edited]
+    branches: [ master ]
+  pull_request:
+    types: [opened, edited]
+    branches: [ master ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Your inclusive bot
+      uses: ./
+      with:
+        github_token: ${{secrets.TOKEN}}
+        close_permission: true
+        message: Some unfriendly or not inclusive words found

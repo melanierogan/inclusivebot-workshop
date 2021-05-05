@@ -20,11 +20,12 @@ try {
 	console.log(token, '<<< does this work?');
 	const octokit = github.getOctokit(token);
 
-	console.log(github.context, 'what is the context');
+	// console.log(github.context, 'what is the context');
 	console.log('GOT OCTOKIT AND GITHUB CONTEXT SHOULD BE ABOVE THIS');
 	const { repo, payload } = github.context;
+	console.log(payload.repository.owner, 'what is the owner');
 	const owner = payload.repository.owner.login;
-	const pull_number = payload.repository.pull_request.number;
+	const pull_number = payload.number;
 	const tryThis = octokit.rest.pulls.listFiles({ owner, repo, pull_number });
 	console.log(tryThis, 'WHAT HAPPENS HERE <<<<<<<');
 	console.log(payload.pullRequests.listFiles(), '<<<< maybe');

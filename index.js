@@ -22,8 +22,6 @@ try {
 
 	if (payload && payload.pull_request && payload.pull_request.body) {
 		console.log(payload.pull_request, '<<< the pull request');
-		console.log(payload.pull_request.body, '<<< the pull request body');
-		const checkCommit = body;
 		const extractBadWords = (ExtractedBadWordsArray, line) => {
 			for (const badWord of badWords) {
 				if (line.includes(badWord)) {
@@ -56,9 +54,7 @@ try {
 		});
 
 		if (result[0].status) {
-			octokit.issues.createComment(isUnfriendlyComment).catch(e => {
-				throw e;
-			});
+			octokit.issues.createComment(isUnfriendlyComment);
 		}
 	}
 } catch (error) {

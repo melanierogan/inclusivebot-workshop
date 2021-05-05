@@ -19,6 +19,7 @@ try {
 	console.log(token, '<<< does this work?');
 	const octokit = github.getOctokit(token);
 	const { repo, payload } = github.context;
+	console.log(payload.pull_request_files, '<<<< maybe');
 	let body = payload.pull_request.body;
 	console.log(body, '<<<< aint no body');
 

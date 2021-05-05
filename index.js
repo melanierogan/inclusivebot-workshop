@@ -26,13 +26,13 @@ const run = async () => {
 		const { repo, payload } = github.context;
 		const owner = payload.repository.owner.login;
 		// const pull_number = payload.number;
-		const pull_number = 42
+		const pull_number = 42;
 		const repoName = repo.repo;
 
 		const { data: pullRequest } = await octokit.pulls.get({
-			owner,
-			repoName,
-			pull_number,
+			owner: owner,
+			repo: repoName,
+			pull_number: pull_number,
 		});
 
 		console.log(pullRequest, 'the pull request <<<<<');

@@ -10,6 +10,7 @@ const unfriendlyWords = [
 	'guys',
 	'obviously',
 	'sane',
+	'banana',
 ];
 
 try {

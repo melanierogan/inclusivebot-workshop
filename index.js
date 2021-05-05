@@ -34,6 +34,12 @@ const run = async () => {
 			repo: 'inclusivebot-workshop',
 			pull_number: 32,
 		});
+		//this now works
+		//TODO
+		//Get files patch and use that as data for spliting down by those lines added
+		//THEN try to get owner, repo and pull number put in dynamically
+		//THEN tidy up messaging
+		//THEN tidy up steps to recap
 
 		console.log(pullRequest, 'the pull request <<<<<');
 		const tryThis = await octokit.rest.pulls.listFiles({
@@ -83,6 +89,8 @@ const run = async () => {
 		// 	// 	octokit.issues.createComment(isUnfriendlyComment);
 		// 	// }
 		// }
+
+		return 'banana';
 	} catch (error) {
 		core.setFailed(error.message);
 	}

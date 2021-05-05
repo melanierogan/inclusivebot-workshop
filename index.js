@@ -16,7 +16,7 @@ try {
 	const token = core.getInput('github_token');
 	const message = core.getInput('message');
 	console.log(token, '<<< does this work?');
-	const octokit = github.getOctokitOptions(token));
+	const octokit = github.getOctokitOptions(token);
 	// const octokit = new github.GitHub(token);
 	const { repo, payload } = github.context;
 	let body;

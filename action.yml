@@ -1,7 +1,7 @@
 name: 'Your inclusive bot'
 description: 'A Github action to detect unfriendly or not inclusive words in a PR'
 inputs:
-  token:  # change this
+  github_token:  # change this
     description: 'Your GitHub Token'
     required: true
   message:

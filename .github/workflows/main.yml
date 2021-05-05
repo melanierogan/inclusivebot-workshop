@@ -25,5 +25,5 @@ jobs:
     - name: Your inclusive bot
       uses: melanierogan/inclusivebot-workshop@v1.2
       with:
-        token: ${{secrets.TOKEN}}
+        github_token: ${{secrets.TOKEN}}
         message: Some unfriendly or not inclusive words found

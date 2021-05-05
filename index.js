@@ -36,14 +36,11 @@ const run = async () => {
 		});
 
 		console.log(pullRequest, 'the pull request <<<<<');
-		// const tryThis = await octokit.rest.pulls.listFiles({
-		// 	owner,
-		// 	repoName,
-		// 	pull_number,
-		// 	mediaType: {
-		// 		format: 'diff',
-		// 	},
-		// });
+		const tryThis = await octokit.rest.pulls.listFiles({
+			owner: 'melanierogan',
+			repo: 'inclusivebot-workshop',
+			pull_number: 32,
+		});
 		console.log(tryThis, 'WHAT HAPPENS HERE <<<<<<<');
 		console.log('BODY SHOULD BE BELOW');
 		let body = payload.pullRequests.body;

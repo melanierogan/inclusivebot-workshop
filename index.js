@@ -33,6 +33,9 @@ const run = async () => {
 			owner,
 			repoName,
 			pull_number,
+			mediaType: {
+				format: 'diff',
+			},
 		});
 		console.log(tryThis, 'WHAT HAPPENS HERE <<<<<<<');
 		console.log('BODY SHOULD BE BELOW');

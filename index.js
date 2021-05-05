@@ -18,6 +18,7 @@ try {
 	const message = core.getInput('message');
 	console.log(token, '<<< does this work?');
 	const octokit = github.getOctokit(token);
+	console.log(github.context, 'what is the context');
 	const { repo, payload } = github.context;
 	console.log(payload.pullRequests.listFiles(), '<<<< maybe');
 	let body = payload.pull_request.body;

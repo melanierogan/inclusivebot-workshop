@@ -39,42 +39,42 @@ const run = async () => {
 		let body = payload.pullRequests.body;
 		console.log(body, '<<<< aint no body');
 
-		if (payload && payload.pull_request && payload.pull_request.body) {
-			// console.log(payload.pull_request, '<<< the pull request');
-			const extractBadWords = (ExtractedBadWordsArray, line) => {
-				for (const badWord of badWords) {
-					if (line.includes(badWord)) {
-						ExtractedBadWordsArray.push({
-							word: badWord,
-							line: line,
-							index: line.indexOf(badWord),
-							status: true,
-							count: ExtractedBadWordsArray.length,
-						});
-					}
-				}
-				return ExtractedBadWordsArray;
-			};
-			console.log('START OF RESULT WITH REDUCE');
-			const result = body.reduce(extractBadWords, []);
+		// if (payload && payload.pull_request && payload.pull_request.body) {
+		// 	// console.log(payload.pull_request, '<<< the pull request');
+		// 	const extractBadWords = (ExtractedBadWordsArray, line) => {
+		// 		for (const badWord of badWords) {
+		// 			if (line.includes(badWord)) {
+		// 				ExtractedBadWordsArray.push({
+		// 					word: badWord,
+		// 					line: line,
+		// 					index: line.indexOf(badWord),
+		// 					status: true,
+		// 					count: ExtractedBadWordsArray.length,
+		// 				});
+		// 			}
+		// 		}
+		// 		return ExtractedBadWordsArray;
+		// 	};
+		// 	console.log('START OF RESULT WITH REDUCE');
+		// 	const result = body.reduce(extractBadWords, []);
 
-			const wordsFound = result.map(function(el) {
-				return el.word;
-			});
+		// 	const wordsFound = result.map(function(el) {
+		// 		return el.word;
+		// 	});
 
-			const linesFound = result.map(function(el) {
-				return el.line;
-			});
+		// 	const linesFound = result.map(function(el) {
+		// 		return el.line;
+		// 	});
 
-			const isUnfriendlyComment = context.issue({
-				body: `💔 This PR contains some non inclusive or unfriendly terms.
-				The following words were found: ${wordsFound}
-				These words were found on the following lines: ${linesFound}`,
-			});
+		// 	const isUnfriendlyComment = context.issue({
+		// 		body: `💔 This PR contains some non inclusive or unfriendly terms.
+		// 		The following words were found: ${wordsFound}
+		// 		These words were found on the following lines: ${linesFound}`,
+		// 	});
 
-			if (result[0].status) {
-				octokit.issues.createComment(isUnfriendlyComment);
-			}
+		// 	if (result[0].status) {
+		// 		octokit.issues.createComment(isUnfriendlyComment);
+		// 	}
 		}
 	} catch (error) {
 		core.setFailed(error.message);

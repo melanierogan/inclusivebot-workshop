@@ -48,9 +48,9 @@ const run = async () => {
 			pull_number: 32,
 		});
 		console.log(tryThis, 'WHAT HAPPENS HERE <<<<<<<');
-		console.log('BODY SHOULD BE BELOW');
-		let body = payload.pullRequests.body;
-		console.log(body, '<<<< aint no body');
+		// console.log('BODY SHOULD BE BELOW');
+		// let body = payload.pullRequests.body;
+		// console.log(body, '<<<< aint no body');
 
 		// if (payload && payload.pull_request && payload.pull_request.body) {
 		// 	// console.log(payload.pull_request, '<<< the pull request');

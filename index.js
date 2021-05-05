@@ -27,10 +27,11 @@ const run = async () => {
 		console.log(payload.repository.owner, 'what is the owner');
 		const owner = payload.repository.owner.login;
 		const pull_number = payload.number;
+		const repoName = repo.repo;
 		console.log(owner, repo, pull_number, '<<<<<<');
 		const tryThis = await octokit.rest.pulls.listFiles({
 			owner,
-			repo,
+			repoName,
 			pull_number,
 		});
 		console.log(tryThis, 'WHAT HAPPENS HERE <<<<<<<');

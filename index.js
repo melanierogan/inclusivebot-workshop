@@ -19,7 +19,7 @@ const run = async () => {
 		const token = core.getInput('github_token');
 		const message = core.getInput('message');
 		console.log(token, '<<< does this work?');
-		const octokit = github.getOctokit(token);
+		const octokit = new github.getOctokit(token);
 
 		// console.log(github.context, 'what is the context');
 		console.log('GOT OCTOKIT AND GITHUB CONTEXT SHOULD BE ABOVE THIS');

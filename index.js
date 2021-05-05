@@ -30,15 +30,15 @@ const run = async () => {
 		const repoName = repo.repo;
 		console.log(owner, repoName, pull_number, '<<<<<<');
 		const { data: pullRequest } = await octokit.pulls.get({
-			owner: 'octokit',
-			repo: 'rest.js',
-			pull_number: 123,
+			owner,
+			repoName,
+			pull_number,
 			mediaType: {
 				format: 'diff',
 			},
 		});
 
-		console.log(pullRequest);
+		console.log(pullRequest, 'the pull request <<<<<');
 		const tryThis = await octokit.rest.pulls.listFiles({
 			owner,
 			repoName,

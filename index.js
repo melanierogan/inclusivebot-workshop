@@ -13,21 +13,11 @@ const unfriendlyWords = [
 ];
 
 try {
-	const token = core.getInput('github_token');
-	const closePermissionCheck = core.getInput('close_permission');
+	const token = core.getInput('token');
 	const message = core.getInput('message');
 	const octokit = new github.GitHub(token);
 	const { repo, payload } = github.context;
 	let body;
-	let closePermission;
-
-	if (closePermissionCheck === 'true') {
-		closePermission = true;
-	} else if (closePermissionCheck === 'false') {
-		closePermission = false;
-	} else {
-		closePermission = false;
-	}
 
 	if (payload && payload.pull_request && payload.pull_request.body) {
 		console.log(payload.pull_request, '<<< the pull request');

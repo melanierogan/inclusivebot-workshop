@@ -25,7 +25,8 @@ const run = async () => {
 		console.log('GOT OCTOKIT AND GITHUB CONTEXT SHOULD BE ABOVE THIS');
 		const { repo, payload } = github.context;
 		const owner = payload.repository.owner.login;
-		const pull_number = payload.number;
+		// const pull_number = payload.number;
+		const pull_number = 42
 		const repoName = repo.repo;
 
 		const { data: pullRequest } = await octokit.pulls.get({

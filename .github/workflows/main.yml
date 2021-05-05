@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Your inclusive bot
-      uses: melanierogan/inclusive_bot@v1
+      uses: melanierogan/inclusive_bot@v1.2
       with:
         token: ${{secrets.TOKEN}}
         message: Some unfriendly or not inclusive words found

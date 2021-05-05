@@ -19,12 +19,12 @@ try {
 	console.log(token, '<<< does this work?');
 	const octokit = github.getOctokit(token);
 	const { repo, payload } = github.context;
-	console.log(payload.pull_request_files, '<<<< maybe');
+	console.log(payload.pullRequests.listFiles(), '<<<< maybe');
 	let body = payload.pull_request.body;
 	console.log(body, '<<<< aint no body');
 
 	if (payload && payload.pull_request && payload.pull_request.body) {
-		console.log(payload.pull_request, '<<< the pull request');
+		// console.log(payload.pull_request, '<<< the pull request');
 		const extractBadWords = (ExtractedBadWordsArray, line) => {
 			for (const badWord of badWords) {
 				if (line.includes(badWord)) {

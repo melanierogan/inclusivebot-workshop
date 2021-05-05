@@ -19,7 +19,8 @@ try {
 	console.log(token, '<<< does this work?');
 	const octokit = github.getOctokit(token);
 	const { repo, payload } = github.context;
-	let body;
+	let body = payload.pull_request.body;
+	console.log(body, '<<<< aint no body');
 
 	if (payload && payload.pull_request && payload.pull_request.body) {
 		console.log(payload.pull_request, '<<< the pull request');

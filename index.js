@@ -15,7 +15,7 @@ const unfriendlyWords = [
 try {
 	const token = core.getInput('github_token');
 	const message = core.getInput('message');
-	console.log(token, 'does this work?');
+	console.log(token, '<<< does this work?');
 	const octokit = new github.GitHub(token);
 	const { repo, payload } = github.context;
 	let body;

@@ -19,9 +19,14 @@ try {
 	const message = core.getInput('message');
 	console.log(token, '<<< does this work?');
 	const octokit = github.getOctokit(token);
+
 	console.log(github.context, 'what is the context');
 	console.log('GOT OCTOKIT AND GITHUB CONTEXT SHOULD BE ABOVE THIS');
 	const { repo, payload } = github.context;
+	const owner = payload.repository.owner.login;
+	const pull_number = payload.repository.pull_request.number;
+	const tryThis = octokit.rest.pulls.listFiles({ owner, repo, pull_number });
+	console.log(tryThis, 'WHAT HAPPENS HERE <<<<<<<');
 	console.log(payload.pullRequests.listFiles(), '<<<< maybe');
 	console.log('BODY SHOULD BE BELOW');
 	let body = payload.pullRequests.body;

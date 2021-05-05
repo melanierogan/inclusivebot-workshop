@@ -14,14 +14,17 @@ const unfriendlyWords = [
 ];
 
 try {
+	console.log('START OF TRY');
 	const token = core.getInput('github_token');
 	const message = core.getInput('message');
 	console.log(token, '<<< does this work?');
 	const octokit = github.getOctokit(token);
 	console.log(github.context, 'what is the context');
+	console.log('GOT OCTOKIT AND GITHUB CONTEXT SHOULD BE ABOVE THIS');
 	const { repo, payload } = github.context;
 	console.log(payload.pullRequests.listFiles(), '<<<< maybe');
-	let body = payload.pull_request.body;
+	console.log('BODY SHOULD BE BELOW');
+	let body = payload.pullRequests.body;
 	console.log(body, '<<<< aint no body');
 
 	if (payload && payload.pull_request && payload.pull_request.body) {
@@ -40,7 +43,7 @@ try {
 			}
 			return ExtractedBadWordsArray;
 		};
-
+		console.log('START OF RESULT WITH REDUCE');
 		const result = body.reduce(extractBadWords, []);
 
 		const wordsFound = result.map(function(el) {

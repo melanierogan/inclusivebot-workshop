@@ -23,11 +23,11 @@ const run = async () => {
 
 		// console.log(github.context, 'what is the context');
 		console.log('GOT OCTOKIT AND GITHUB CONTEXT SHOULD BE ABOVE THIS');
-		const { repo, payload } = github.context;
-		const owner = payload.repository.owner.login;
+		// const { repo, payload } = github.context;
+		// const owner = payload.repository.owner.login;
 		// const pull_number = payload.number;
-		const pull_number = 32;
-		const repoName = repo.repo;
+		// const pull_number = 32;
+		// const repoName = repo.repo;
 
 		const { data: pullRequest } = await octokit.pulls.get({
 			owner: 'melanierogan',
@@ -45,7 +45,7 @@ const run = async () => {
 		const files = await octokit.rest.pulls.listFiles({
 			owner: 'melanierogan',
 			repo: 'inclusivebot-workshop',
-			pull_number: 32,
+			pull_number: 43,
 		});
 
 		// console.log('BODY SHOULD BE BELOW');

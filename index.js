@@ -77,10 +77,10 @@ const run = async () => {
 			return line.substring(1);
 		};
 		const extractBadWords = (ExtractedBadWordsArray, line) => {
-			for (const badWord of badWords) {
-				if (line.includes(badWord)) {
+			for (const unfriendlyWord of unfriendlyWords) {
+				if (line.includes(unfriendlyWord)) {
 					ExtractedBadWordsArray.push({
-						word: badWord,
+						word: unfriendlyWord,
 						line: line,
 						index: line.indexOf(badWord),
 						status: true,

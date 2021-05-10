@@ -98,7 +98,7 @@ const run = async () => {
 			owner: 'melanierogan',
 			repo: 'inclusivebot-workshop',
 			issue_number: 43,
-			body: message,
+			body: isUnfriendlyComment,
 		});
 		if (result[0].status) {
 			console.log('WE OUT HERE');

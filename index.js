@@ -42,7 +42,7 @@ const run = async () => {
 		//THEN tidy up steps to recap
 
 		console.log(pullRequest, 'the pull request <<<<<');
-		const tryThis = await octokit.rest.pulls.listFiles({
+		const files = await octokit.rest.pulls.listFiles({
 			owner: 'melanierogan',
 			repo: 'inclusivebot-workshop',
 			pull_number: 32,
@@ -68,27 +68,53 @@ const run = async () => {
 		// 		}
 		// 		return ExtractedBadWordsArray;
 		// 	};
-		// 	// console.log('START OF RESULT WITH REDUCE');
-		// 	// const result = body.reduce(extractBadWords, []);
 
-		// 	// const wordsFound = result.map(function(el) {
-		// 	// 	return el.word;
-		// 	// });
+		const checkCommit = files.data[0].patch.split('\n');
+		const onlyAddedLines = line => {
+			return line.startsWith('+');
+		};
+		const removeFirstPlus = line => {
+			return line.substring(1);
+		};
+		const extractBadWords = (ExtractedBadWordsArray, line) => {
+			for (const badWord of badWords) {
+				if (line.includes(badWord)) {
+					ExtractedBadWordsArray.push({
+						word: badWord,
+						line: line,
+						index: line.indexOf(badWord),
+						status: true,
+						count: ExtractedBadWordsArray.length,
+					});
+				}
+			}
+			return ExtractedBadWordsArray;
+		};
 
-		// 	// const linesFound = result.map(function(el) {
-		// 	// 	return el.line;
-		// 	// });
+		console.log('START OF RESULT WITH REDUCE');
 
-		// 	// const isUnfriendlyComment = context.issue({
-		// 	// 	body: `💔 This PR contains some non inclusive or unfriendly terms.
-		// 	// 	The following words were found: ${wordsFound}
-		// 	// 	These words were found on the following lines: ${linesFound}`,
-		// 	// });
+		const result = checkCommit
+			.filter(onlyAddedLines)
+			.map(removeFirstPlus)
+			.reduce(extractBadWords, []);
 
-		// 	// if (result[0].status) {
-		// 	// 	octokit.issues.createComment(isUnfriendlyComment);
-		// 	// }
-		// }
+		const wordsFound = result.map(function(el) {
+			return el.word;
+		});
+
+		const linesFound = result.map(function(el) {
+			return el.line;
+		});
+
+		const isUnfriendlyComment = context.issue({
+			body: `💔 This PR contains some non inclusive or unfriendly terms.
+				The following words were found: ${wordsFound}
+				These words were found on the following lines: ${linesFound}`,
+		});
+
+		if (result[0].status) {
+			octokit.issues.createComment(isUnfriendlyComment);
+		}
 
 		return 'banana';
 	} catch (error) {

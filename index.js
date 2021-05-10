@@ -96,7 +96,12 @@ const run = async () => {
 		console.log(result, '<<< WHAT IS THE RESULT?');
 		if (result[0].status) {
 			console.log('WE OUT HERE');
-			octokit.rest.issues.createComment(message);
+			octokit.rest.issues.createComment({
+				owner: 'melanierogan',
+				repo: 'inclusivebot-workshop',
+				issue_number: 43,
+				body: isUnfriendlyComment,
+			});
 		}
 
 		return 'banana';

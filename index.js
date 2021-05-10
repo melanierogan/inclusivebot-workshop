@@ -82,7 +82,7 @@ const run = async () => {
 					ExtractedBadWordsArray.push({
 						word: unfriendlyWord,
 						line: line,
-						index: line.indexOf(badWord),
+						index: line.indexOf(unfriendlyWord),
 						status: true,
 						count: ExtractedBadWordsArray.length,
 					});

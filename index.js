@@ -41,7 +41,7 @@ const run = async () => {
 		//THEN tidy up messaging
 		//THEN tidy up steps to recap
 
-		console.log(pullRequest, 'the pull request <<<<<');
+		// console.log(pullRequest, 'the pull request <<<<<');
 		const files = await octokit.rest.pulls.listFiles({
 			owner: 'melanierogan',
 			repo: 'inclusivebot-workshop',
@@ -94,13 +94,15 @@ const run = async () => {
 		console.log(wordsFound, '<<< WHAT WORDS');
 		console.log(linesFound, '<<< WHAT LINES');
 		console.log(result, '<<< WHAT IS THE RESULT?');
+		const newComment = await octokit.rest.issues.createComment({
+			owner: 'melanierogan',
+			repo: 'inclusivebot-workshop',
+			issue_number: 43,
+			body: message,
+		});
 		if (result[0].status) {
 			console.log('WE OUT HERE');
-			octokit.rest.issues.createComment({
-				repo: 'inclusivebot-workshop',
-				issue_number: 43,
-				body: message,
-			});
+			newComment();
 		}
 
 		return 'banana';

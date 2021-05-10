@@ -97,9 +97,8 @@ const run = async () => {
 		if (result[0].status) {
 			console.log('WE OUT HERE');
 			octokit.rest.issues.createComment({
-				owner: 'melanierogan',
 				repo: 'inclusivebot-workshop',
-				pull_number: 43,
+				issue_number: 43,
 				body: message,
 			});
 		}

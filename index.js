@@ -99,8 +99,8 @@ const run = async () => {
 			octokit.rest.issues.createComment({
 				owner: 'melanierogan',
 				repo: 'inclusivebot-workshop',
-				issue_number: 43,
-				body: isUnfriendlyComment,
+				pull_number: 43,
+				body: message,
 			});
 		}
 

@@ -48,27 +48,6 @@ const run = async () => {
 			pull_number: 43,
 		});
 
-		// console.log('BODY SHOULD BE BELOW');
-		// let body = payload.pullRequests.body;
-		// console.log(body, '<<<< aint no body');
-
-		// if (payload && payload.pull_request && payload.pull_request.body) {
-		// 	// console.log(payload.pull_request, '<<< the pull request');
-		// 	const extractBadWords = (ExtractedBadWordsArray, line) => {
-		// 		for (const badWord of badWords) {
-		// 			if (line.includes(badWord)) {
-		// 				ExtractedBadWordsArray.push({
-		// 					word: badWord,
-		// 					line: line,
-		// 					index: line.indexOf(badWord),
-		// 					status: true,
-		// 					count: ExtractedBadWordsArray.length,
-		// 				});
-		// 			}
-		// 		}
-		// 		return ExtractedBadWordsArray;
-		// 	};
-
 		const checkCommit = files.data[0].patch.split('\n');
 		console.log(checkCommit, '<<< WHAT IS IN THIS COMMIT');
 		const onlyAddedLines = line => {
@@ -116,7 +95,7 @@ const run = async () => {
 		console.log(linesFound, '<<< WHAT LINES');
 		console.log(result, '<<< WHAT IS THE RESULT?');
 		if (result[0].status) {
-			octokit.issues.createComment(isUnfriendlyComment);
+			octokit.rest.issues.createComment(isUnfriendlyComment);
 		}
 
 		return 'banana';

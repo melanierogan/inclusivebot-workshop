@@ -94,7 +94,7 @@ const run = async () => {
 		console.log(wordsFound, '<<< WHAT WORDS');
 		console.log(linesFound, '<<< WHAT LINES');
 		console.log(result, '<<< WHAT IS THE RESULT?');
-		const newComment = await octokit.rest.issues.createComment({
+		const newComment = await octokit.issues.createComment({
 			owner: 'melanierogan',
 			repo: 'inclusivebot-workshop',
 			issue_number: 43,

@@ -70,6 +70,7 @@ const run = async () => {
 		// 	};
 
 		const checkCommit = files.data[0].patch.split('\n');
+		console.log(checkCommit, '<<< WHAT IS IN THIS COMMIT');
 		const onlyAddedLines = line => {
 			return line.startsWith('+');
 		};
@@ -90,7 +91,7 @@ const run = async () => {
 			}
 			return ExtractedBadWordsArray;
 		};
-
+		console.log(extractBadWords, '<<< WHAT ARE THE BAD WORDS THAT WERE FOUND');
 		console.log('START OF RESULT WITH REDUCE');
 
 		const result = checkCommit
@@ -111,7 +112,9 @@ const run = async () => {
 				The following words were found: ${wordsFound}
 				These words were found on the following lines: ${linesFound}`,
 		};
-
+		console.log(wordsFound, '<<< WHAT WORDS');
+		console.log(linesFound, '<<< WHAT LINES');
+		console.log(result, '<<< WHAT IS THE RESULT?');
 		if (result[0].status) {
 			octokit.issues.createComment(isUnfriendlyComment);
 		}

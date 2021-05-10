@@ -25,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Your inclusive bot
-      uses: melanierogan/inclusivebot-workshop@v1.44
+      uses: melanierogan/inclusivebot-workshop@v1.45
       with:
-        github_token: ${{secrets.INCLUSIVE_BOT_TOKEN}}
+        github_token: ${{secrets.GITHUB_TOKEN}}
         message: Some unfriendly or not inclusive words found

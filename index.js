@@ -86,11 +86,9 @@ const run = async () => {
 			return el.line;
 		});
 
-		const isUnfriendlyComment = {
-			body: `💔 This PR contains some non inclusive or unfriendly terms.
+		const isUnfriendlyComment = `💔 This PR contains some non inclusive or unfriendly terms.
 				The following words were found: ${wordsFound}
-				These words were found on the following lines: ${linesFound}`,
-		};
+				These words were found on the following lines: ${linesFound}`;
 		console.log(wordsFound, '<<< WHAT WORDS');
 		console.log(linesFound, '<<< WHAT LINES');
 		console.log(result, '<<< WHAT IS THE RESULT?');

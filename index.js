@@ -95,7 +95,8 @@ const run = async () => {
 		console.log(linesFound, '<<< WHAT LINES');
 		console.log(result, '<<< WHAT IS THE RESULT?');
 		if (result[0].status) {
-			octokit.rest.issues.createComment(isUnfriendlyComment);
+			console.log('WE OUT HERE');
+			octokit.rest.issues.createComment(message);
 		}
 
 		return 'banana';

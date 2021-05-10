@@ -95,7 +95,7 @@ const run = async () => {
 		const newComment = await octokit.issues.createComment({
 			owner: 'melanierogan',
 			repo: 'inclusivebot-workshop',
-			issue_number: 43,
+			issue_number: 59,
 			body: isUnfriendlyComment,
 		});
 		if (result[0].status) {

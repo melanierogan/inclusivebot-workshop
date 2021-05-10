@@ -47,7 +47,7 @@ const run = async () => {
 			repo: 'inclusivebot-workshop',
 			pull_number: 32,
 		});
-		console.log(tryThis, 'WHAT HAPPENS HERE <<<<<<<');
+
 		// console.log('BODY SHOULD BE BELOW');
 		// let body = payload.pullRequests.body;
 		// console.log(body, '<<<< aint no body');

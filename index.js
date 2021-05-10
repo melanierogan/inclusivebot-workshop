@@ -106,11 +106,11 @@ const run = async () => {
 			return el.line;
 		});
 
-		const isUnfriendlyComment = context.issue({
+		const isUnfriendlyComment = {
 			body: `💔 This PR contains some non inclusive or unfriendly terms.
 				The following words were found: ${wordsFound}
 				These words were found on the following lines: ${linesFound}`,
-		});
+		};
 
 		if (result[0].status) {
 			octokit.issues.createComment(isUnfriendlyComment);

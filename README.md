@@ -1,4 +1,4 @@
-# Making your own inclusive bot
+# Making your own inclusive bot banana
 
 ## What, why, how
 Ever saw a word in a repository that really made you feel bad? Why use it? Can't we use something else? We can!
